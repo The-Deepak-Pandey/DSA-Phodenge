@@ -39,13 +39,24 @@ void traverseLL(Node* head){
     return;
 }
 
+int lengthOfLL(Node* head){
+    Node* temp = head;
+    int l = 0;
+    while(temp!=nullptr){
+        l++;
+        temp = temp->next;
+    }
+    return l;
+}
+
 int main(){
 
     vector<int> arr = {2, 5, 8, 10, 12};
 
     Node* head = convertArr2LL(arr);
 
-    traverseLL(head);    
+    // traverseLL(head);
+    cout << lengthOfLL(head);
 
     return 0;
 }
