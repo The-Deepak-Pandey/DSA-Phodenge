@@ -49,6 +49,15 @@ int lengthOfLL(Node* head){
     return l;
 }
 
+bool searchLL(Node* head, int val){
+    Node* temp = head;
+    while(temp!=nullptr){
+        if(temp->data == val) return true;
+        temp = temp->next;
+    }
+    return false;
+}
+
 int main(){
 
     vector<int> arr = {2, 5, 8, 10, 12};
@@ -56,7 +65,8 @@ int main(){
     Node* head = convertArr2LL(arr);
 
     // traverseLL(head);
-    cout << lengthOfLL(head);
+    // cout << lengthOfLL(head);
+    // cout << searchLL(head, 2);
 
     return 0;
 }
