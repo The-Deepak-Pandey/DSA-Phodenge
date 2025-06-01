@@ -95,3 +95,19 @@ Heap Sort is a comparison-based sorting algorithm that uses the properties of a 
 
 ### Space Complexity:
 - **In-Place Sorting**: \(O(1)\)
+
+## Using Priority Queue
+
+### Max - Heap
+
+1. **Initialization**: `priority_queue<int> maxHeap;`
+2. **Insertion**: `maxHeap.push(value);`
+3. **Peek (Access the largest element)**: `maxHeap.top();`
+4. **Deletion (Remove the largest element)**: `maxHeap.pop();`
+
+### Min - Heap
+
+1. **Initialization**: `priority_queue<int, vector<int>, greater<int>> minHeap;`
+2. **Insertion**: `minHeap.push(value);`
+3. **Peek (Access the smallest element)**: `minHeap.top();`
+4. **Deletion (Remove the smallest element)**: `minHeap.pop();`
