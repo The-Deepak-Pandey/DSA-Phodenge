@@ -14,6 +14,9 @@ public:
     }
 };
 
+
+// Reccursive Traversal Functions
+
 void preOrderTraversal(Node* root){
     if(root == nullptr){
         return;
@@ -42,6 +45,72 @@ void postOrderTraversal(Node* root){
     postOrderTraversal(root->left);
     postOrderTraversal(root->right);
     cout << root->data << " ";
+}
+
+//Iterative Traversal Functions
+
+vector<int> iterativePreorderTraversal(Node* A) {
+    vector<int> ans;
+    stack<Node*> st;
+    st.push(A);
+    
+    while(!st.empty()){
+        Node* topNode = st.top();
+        st.pop();
+        ans.push_back(topNode->data);
+        if(topNode->right){
+            st.push(topNode->right);
+        }
+        if(topNode->left){
+            st.push(topNode->left);
+        }
+    }
+    
+    return ans;
+}
+
+vector<int> iterativeInorderTraversal(Node* root) {
+    vector<int> ans;
+    stack<Node*> st;
+    Node* curr = root;
+    
+    while(true){
+        if(curr){
+            st.push(curr);
+            curr = curr->left;
+        } 
+        else{
+            if(st.empty()) return ans;
+            Node* topNode = st.top();
+            ans.push_back(topNode->data);
+            st.pop();
+            curr = topNode->right;
+        }
+    }
+    
+    return ans;
+}
+
+vector<int> iterativePostorderTraversal(Node* A) {
+     vector<int> ans;
+    stack<Node*> st;
+    st.push(A);
+    
+    while(!st.empty()){
+        Node* topNode = st.top();
+        st.pop();
+        ans.push_back(topNode->data);
+        if(topNode->left){
+            st.push(topNode->left);
+        }
+        if(topNode->right){
+            st.push(topNode->right);
+        }
+    }
+    
+    reverse(ans.begin(), ans.end());
+    
+    return ans;
 }
 
 void levelOrderTraversal(Node* root){
