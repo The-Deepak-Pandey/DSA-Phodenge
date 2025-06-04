@@ -47,71 +47,7 @@ void postOrderTraversal(Node* root){
     cout << root->data << " ";
 }
 
-//Iterative Traversal Functions
 
-vector<int> iterativePreorderTraversal(Node* A) {
-    vector<int> ans;
-    stack<Node*> st;
-    st.push(A);
-    
-    while(!st.empty()){
-        Node* topNode = st.top();
-        st.pop();
-        ans.push_back(topNode->data);
-        if(topNode->right){
-            st.push(topNode->right);
-        }
-        if(topNode->left){
-            st.push(topNode->left);
-        }
-    }
-    
-    return ans;
-}
-
-vector<int> iterativeInorderTraversal(Node* root) {
-    vector<int> ans;
-    stack<Node*> st;
-    Node* curr = root;
-    
-    while(true){
-        if(curr){
-            st.push(curr);
-            curr = curr->left;
-        } 
-        else{
-            if(st.empty()) return ans;
-            Node* topNode = st.top();
-            ans.push_back(topNode->data);
-            st.pop();
-            curr = topNode->right;
-        }
-    }
-    
-    return ans;
-}
-
-vector<int> iterativePostorderTraversal(Node* A) {
-     vector<int> ans;
-    stack<Node*> st;
-    st.push(A);
-    
-    while(!st.empty()){
-        Node* topNode = st.top();
-        st.pop();
-        ans.push_back(topNode->data);
-        if(topNode->left){
-            st.push(topNode->left);
-        }
-        if(topNode->right){
-            st.push(topNode->right);
-        }
-    }
-    
-    reverse(ans.begin(), ans.end());
-    
-    return ans;
-}
 
 void levelOrderTraversal(Node* root){
     if(root == nullptr){
@@ -122,15 +58,20 @@ void levelOrderTraversal(Node* root){
     q.push(root);
 
     while(!q.empty()){
-        Node* topNode = q.front();
-        q.pop();
-        cout << topNode->data << " ";
-        if(topNode->left != nullptr){
-            q.push(topNode->left);
+        int size = q.size();
+        for(int i = 0; i < size; i++) {
+            Node* currentNode = q.front();
+            q.pop();
+            cout << currentNode->data << " ";
+
+            if(currentNode->left) {
+                q.push(currentNode->left);
+            }
+            if(currentNode->right) {
+                q.push(currentNode->right);
+            }
         }
-        if(topNode->right != nullptr){
-            q.push(topNode->right);
-        }
+        cout << endl; // Print a new line after each level
     }
 }
 
