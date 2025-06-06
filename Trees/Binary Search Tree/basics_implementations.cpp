@@ -57,6 +57,13 @@ Node* findMin(Node* root){
     return root;
 }
 
+Node* findMax(Node* root){
+    while(root->right){
+        root = root->right;
+    }
+    return root;
+}
+
 Node* deleteNode(Node* root, int key) {
     if(root == NULL) return NULL;
 
