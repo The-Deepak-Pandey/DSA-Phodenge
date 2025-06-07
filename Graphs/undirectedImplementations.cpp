@@ -29,12 +29,31 @@ public:
         return u >= 0 && u < size && v >= 0 && v < size && matrix[u][v] == 1;
     }
 
-    void print() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                std::cout << matrix[i][j] << " ";
+    void bfs(int start){
+        vector<bool> visited(size, false);
+        queue<int> q;
+        visited[start] = true;
+        q.push(start);
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            cout << node << " ";
+            for(int i = 0; i < size; i++){
+                if(matrix[node][i] == 1 && !visited[i]){
+                    visited[i] = true;
+                    q.push(i);
+                }
             }
-            std::cout << std::endl;
+        }
+    }
+
+    void dfs(int start, vector<bool> &visited){
+        visited[start] = true;
+        cout << start << " ";
+        for(int i = 0; i < size; i++){
+            if(matrix[start][i] == 1 && !visited[i]){
+                dfs(i, visited);
+            }
         }
     }
 };
@@ -68,13 +87,31 @@ public:
                find(list[u].begin(), list[u].end(), v) != list[u].end();
     }
 
-    void print() {
-        for (int i = 0; i < size; i++) {
-            cout << i << ": ";
-            for (int j : list[i]) {
-                cout << j << " ";
+    void bfs(int start){
+        vector<bool> visited(size, false);
+        queue<int> q;
+        visited[start] = true;
+        q.push(start);
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            cout << node << " ";
+            for(int neighbor : list[node]){
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    q.push(neighbor);
+                }
             }
-            cout << endl;
+        }
+    }
+
+    void dfs(int start, vector<bool> &visited){
+        visited[start] = true;
+        cout << start << " ";
+        for(int neighbor : list[start]){
+            if(!visited[neighbor]){
+                dfs(neighbor, visited);
+            }
         }
     }
 };
