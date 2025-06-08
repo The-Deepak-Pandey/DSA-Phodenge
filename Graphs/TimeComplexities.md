@@ -12,6 +12,8 @@
 
 Topological Sort of a Directed Acyclic Graph (DAG) is a linear ordering of its vertices such that for every directed edge u→v, vertex u appears before vertex v in the ordering.
 
+When question is like - something before something , try thinking of toposort
+
 ### 📌 Summary Table
 
 | Method                  | Time Complexity | Space Complexity | Method |
