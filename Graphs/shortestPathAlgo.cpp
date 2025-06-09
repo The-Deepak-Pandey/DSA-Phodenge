@@ -26,7 +26,7 @@ vector<int> shortestPath1(int src, vector<vector<int>>& adj) {
     return dist;
 }
 
-vector<int> dijkstra(int src, vector<vector<pair<int, int>>>& adj) {
+vector<int> dijkstraPQ(int src, vector<vector<pair<int, int>>>& adj) {
     int n = adj.size();
     vector<int> ans(n, INT_MAX);
     ans[src] = 0;
@@ -48,6 +48,37 @@ vector<int> dijkstra(int src, vector<vector<pair<int, int>>>& adj) {
             if(curDist + neighWeight < ans[neighNode]){
                 ans[neighNode] = curDist + neighWeight;
                 pq.push({curDist + neighWeight, neighNode});
+            }
+        }
+    }
+    
+    return ans;
+}
+
+vector<int> dijkstraSET(int src, vector<vector<pair<int, int>>>& adj) {
+    int n = adj.size();
+    vector<int> ans(n, INT_MAX);
+    ans[src] = 0;
+    
+    set<pair<int, int>> s;
+    s.insert({0, src});
+    
+    while(!s.empty()){
+        auto topNode = *s.begin();
+        int node = topNode.second;
+        int curDist = topNode.first;
+        s.erase(s.begin());
+        
+        for(auto neigh : adj[node]){
+            int neighNode = neigh.first;
+            int neighWeight = neigh.second;
+            
+            if(curDist + neighWeight < ans[neighNode]){
+                if(ans[neighNode] != INT_MAX){
+                    s.erase(s.find({ans[neighNode], neighNode}));
+                }
+                ans[neighNode] = curDist + neighWeight;
+                s.insert({ans[neighNode], neighNode});
             }
         }
     }
