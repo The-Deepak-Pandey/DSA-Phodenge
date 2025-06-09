@@ -22,3 +22,6 @@ When question is like - something before something , try thinking of toposort
 | Kahn’s Algorithm (BFS)  | O(V + E)         | O(V + E)          | Use queue with indegrees array |
 
 
+## Dijkstra's Algorithm
+
+- <b>Using Priority Queue</b> ---> `ElogV`
