@@ -24,4 +24,17 @@ When question is like - something before something , try thinking of toposort
 
 ## Dijkstra's Algorithm
 
-- <b>Using Priority Queue</b> ---> `ElogV`
+`ElogV`
+
+
+Could be implemented either with Priority Queue or Set data structure. While implementing set, when found a smaller distance just erase the older value from the set like -
+
+```C++
+if(curDist + neighWeight < ans[neighNode]){
+    if(ans[neighNode] != INT_MAX){
+        s.erase(s.find({ans[neighNode], neighNode}));
+    }
+    ans[neighNode] = curDist + neighWeight;
+    s.insert({ans[neighNode], neighNode});
+}
+```
