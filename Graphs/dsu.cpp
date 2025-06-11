@@ -48,13 +48,12 @@ public:
 
         if(ulp_u == ulp_v) return; // If they are already in the same set, do nothing
         
-        if(rank[ulp_u] < rank[ulp_v]) {
+        if(size[ulp_u] < size[ulp_v]) {
             parent[ulp_u] = ulp_v; // Make ulp_v the parent of ulp_u
-        } else if(rank[ulp_u] > rank[ulp_v]) {
-            parent[ulp_v] = ulp_u; // Make ulp_u the parent of ulp_v
+            size[ulp_v] += size[ulp_u]; // Update the size of the new parent
         } else {
             parent[ulp_v] = ulp_u; // Make ulp_u the parent of ulp_v
-            rank[ulp_u]++; // Increase the rank of the new parent
+            size[ulp_u] += size[ulp_v]; // Update the size of the new parent
         }
     }
 
