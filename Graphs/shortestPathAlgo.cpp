@@ -162,6 +162,39 @@ vector<int> bellmanFord(int src, vector<vector<int>> &edges, int V){
 
 }
 
-vector<int> floydWarshall(int V, vector<vector<int>>& edges) {
+vector<vector<int>> floydWarshall(int V, vector<vector<int>>& edges) {
+    // Initialize distance matrix
+    vector<vector<int>> dist(V, vector<int>(V, INT_MAX));
     
+    // Initialize distances
+    for (int i = 0; i < V; i++) {
+        dist[i][i] = 0;
+    }
+    
+    for (auto& edge : edges) {
+        int u = edge[0], v = edge[1], w = edge[2];
+        dist[u][v] = min(dist[u][v], w);
+    }
+    
+    // Floyd-Warshall algorithm
+
+    for(int via = 0; via < V; via++){
+        for(int u = 0; u < V; u++){
+            for(int v = 0; v < V; v++){
+                if(dist[u][via] != INT_MAX && dist[via][v] != INT_MAX){
+                    dist[u][v] = min(dist[u][v], dist[u][via] + dist[via][v]);
+                }
+            }
+        }
+    }
+
+    // Negative cycle detection
+    for (int k = 0; k < V; k++) {
+        if (dist[k][k] < 0) {
+            cout << "Negative weight cycle detected!" << endl;
+            return {{-1}};
+        }
+    }
+
+    return dist;
 }
