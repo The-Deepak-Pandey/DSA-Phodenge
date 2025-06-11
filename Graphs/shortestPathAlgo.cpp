@@ -154,10 +154,10 @@ vector<int> bellmanFord(int src, vector<vector<int>> &edges, int V){
 
         if(dist[u] != 1e8 && dist[u] + wt < dist[v]){
             cout << "Negative weight cycle detected!" << endl;
-            return {};
+            return {-1};
         }
     }
 
     return dist;
-    
+
 }
