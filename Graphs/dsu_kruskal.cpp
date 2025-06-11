@@ -58,3 +58,7 @@ public:
     }
 
 };
+
+int kruskalAlgo(int V, vector<vector<int>> adj[]){
+    
+}
