@@ -47,3 +47,7 @@ if(curDist + neighWeight < ans[neighNode]){
 `O(V^3)` - Time Complexity
 
 `O(V^2)` - Space Complexity
+
+## Disjoint Set Union
+
+`O(4*alpha)` - Time Complexity
