@@ -38,3 +38,6 @@ if(curDist + neighWeight < ans[neighNode]){
     s.insert({ans[neighNode], neighNode});
 }
 ```
+## Bellman-Ford Algorithm
+
+`O(V^2)`
