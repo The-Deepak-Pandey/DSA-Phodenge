@@ -1,3 +1,5 @@
+// Topo Sort works on Directed Acyclic Graphs (DAGs).
+
 #include <bits/stdc++.h>
 using namespace std;
 
