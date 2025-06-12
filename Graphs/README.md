@@ -51,3 +51,7 @@ if(curDist + neighWeight < ans[neighNode]){
 ## Disjoint Set Union
 
 `O(4*alpha)` - Time Complexity
+
+## Kosaraju Algorithm
+
+`3 times O(V+E)` - Time Complexity
